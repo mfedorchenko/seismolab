@@ -1,0 +1,26 @@
+{
+    "sourceFile": "docs/architecture.md",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 2,
+            "patches": [
+                {
+                    "date": 1778569735406,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1778569821234,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,12 @@\n # Architektur und Datenmodell\r\n \r\n ## Komponenten\r\n \r\n-**Graph**\r\n+**Graph**  \r\n Einer der wichtigsten UI-Bausteine ist der Graph, auf dem Life die gemessene Daten angezeigt werden. Um den Graph zu bekommen, wird für jeden Punkt ein STA/LTA-Algorithmus verwendet, um Charakteristische Funktion anzuzeigen, die die Platzierung jedes Punktes auf dem Grapg feststellt.\r\n \r\n-**\"Export\" Button**\r\n+**\"Export\" Button**  \r\n Die Export Button erscheint nur, wenn das Gerät ein Erdbeben erkennt, aka wenn der Wert von Daten einen Trigger Point überschneidet.\r\n \r\n-**Optional: \"Send on server\" Button**\r\n+**Optional: \"Send on server\" Button**  \r\n Beim Klick auf dieses Button wird der Graph, der ein Erdbeben aufgenommen hat, an einen Server automatisch geschickt. Diese Funktionalität implementiere ich, wenn ich die obige beide UI-Bausteine + richtige Interface fertighabe und Zeit noch übrig habe.\r\n"
+                },
+                {
+                    "date": 1778569852547,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,12 @@\n+# Architektur und Datenmodell\r\n+\r\n+## Komponenten\r\n+\r\n+**Graph**  \r\n+Einer der wichtigsten UI-Bausteine ist der Graph, auf dem Life die gemessene Daten angezeigt werden. Um den Graph zu bekommen, wird für jeden Punkt ein STA/LTA-Algorithmus verwendet, um Charakteristische Funktion anzuzeigen, die die Platzierung jedes Punktes auf dem Grapg feststellt.\r\n+\r\n+**\"Export\" Button**  \r\n+Die Export Button erscheint nur, wenn das Gerät ein Erdbeben erkennt, aka wenn der Wert von Daten einen Trigger Point überschneidet.\r\n+\r\n+**Optional: \"Send on server\" Button**  \r\n+Beim Klick auf dieses Button wird der Graph, der ein Erdbeben aufgenommen hat, an einen Server automatisch geschickt. Diese Funktionalität implementiere ich, wenn ich die obige beide UI-Bausteine + richtige Interface fertighabe und Zeit noch übrig habe.\r\n"
+                }
+            ],
+            "date": 1778569735406,
+            "name": "Commit-0",
+            "content": "# Architektur und Datenmodell\r\n\r\n## Komponenten\r\n\r\n**Graph**\r\nEiner der wichtigsten UI-Bausteine ist der Graph, auf dem Life die gemessene Daten angezeigt werden. Um den Graph zu bekommen, wird für jeden Punkt ein STA/LTA-Algorithmus verwendet, um Charakteristische Funktion anzuzeigen, die die Platzierung jedes Punktes auf dem Grapg feststellt.\r\n\r\n**\"Export\" Button**\r\nDie Export Button erscheint nur, wenn das Gerät ein Erdbeben erkennt, aka wenn der Wert von Daten einen Trigger Point überschneidet.\r\n\r\n**Optional: \"Send on server\" Button**\r\nBeim Klick auf dieses Button wird der Graph, der ein Erdbeben aufgenommen hat, an einen Server automatisch geschickt. Diese Funktionalität implementiere ich, wenn ich die obige beide UI-Bausteine + richtige Interface fertighabe und Zeit noch übrig habe.\r\n"
+        }
+    ]
+}
