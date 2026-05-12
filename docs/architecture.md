@@ -3,10 +3,9 @@
 ## Komponenten
 
 **Graph**  
-Einer der wichtigsten UI-Bausteine ist der Graph, auf dem Life die gemessene Daten angezeigt werden. Um den Graph zu bekommen, wird für jeden Punkt ein STA/LTA-Algorithmus verwendet, um Charakteristische Funktion anzuzeigen, die die Platzierung jedes Punktes auf dem Grapg feststellt.
-
+Der Graph ist ein zentraler UI-Baustein der App. Er zeigt die live gemessenen Rohdaten des Accelerometer-Sensors an. Zur Erdbebendetektion wird intern eine charakteristische Funktion verwendet, die aus den Rohdaten mithilfe von STA und LTA berechnet wird. Diese Funktion dient nur als Hilfsfunktion und ist für den User nicht direkt relevant. Überschreitet der STA/LTA-Wert einen definierten Trigger-Schwellwert, wird die entsprechende Aufnahme im Rohdaten-Graphen als mögliches Erdbeben markiert.
 **"Export" Button**  
-Die Export Button erscheint nur, wenn das Gerät ein Erdbeben erkennt, aka wenn der Wert von Daten einen Trigger Point überschneidet.
+Der Export-Button erscheint nur, wenn das Gerät ein mögliches Erdbeben erkennt, also wenn die charakteristische Funktion den Trigger-Schwellwert überschreitet. Beim Klick auf den Button werden die aufgezeichneten Rohdaten bzw. der zugehörige Graph lokal auf dem Gerät gespeichert.
 
 **Optional: "Send on server" Button**  
-Beim Klick auf dieses Button wird der Graph, der ein Erdbeben aufgenommen hat, an einen Server automatisch geschickt. Diese Funktionalität implementiere ich, wenn ich die obige beide UI-Bausteine + richtige Interface fertighabe und Zeit noch übrig habe.
+Beim Klick auf diesen Button werden die aufgezeichneten Erdbebendaten an einen Server gesendet. Diese Funktion wird optional implementiert, falls nach der Umsetzung des Graphen, der Detektionslogik und des Interfaces noch genügend Zeit bleibt.

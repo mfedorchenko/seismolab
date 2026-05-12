@@ -1,50 +1,96 @@
-# Welcome to your Expo app 👋
+# SeismoLab
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+## Mockup
 
-## Get started
+![Storyboard](docs\storyboard.png)
 
-1. Install dependencies
+## App Beschreibung
 
-   ```bash
-   npm install
-   ```
+SeismoLab ist eine mobile Anwendung zur Detektion und Visualisierung von möglichen Erdbebenereignissen mithilfe der eingebauten Smartphone-Sensoren. Die App verwendet die Daten des Accelerometer-Sensors, um kontinuierlich Bewegungen des Geräts zu messen und diese in Echtzeit grafisch darzustellen.  
 
-2. Start the app
+Ein zentraler Bestandteil der Anwendung ist der Live-Graph, der die aufgenommenen Rohdaten visualisiert. Zusätzlich verarbeitet die App die Sensordaten intern mit einem STA/LTA-Verfahren (Short-Term Average / Long-Term Average), um auffällige Bewegungsmuster zu erkennen. Daraus wird eine charakteristische Funktion berechnet, die zur automatischen Erdbebendetektion dient. Überschreitet der berechnete Wert einen definierten Trigger-Schwellwert, erkennt die Anwendung ein mögliches Erdbebenereignis.  
 
-   ```bash
-   npx expo start
-   ```
+Wird ein solches Ereignis erkannt, kann der User die aufgezeichneten Daten über einen Export-Button lokal auf dem Gerät speichern. Dadurch lassen sich relevante Messungen später analysieren.  
 
-In the output, you'll find options to open the app in a
+Optional kann die Anwendung erweitert werden, sodass erkannte Ereignisse zusätzlich an einen externen Server gesendet werden. Im Fall eines tatsächlichen Erdbebens könnten die Messdaten mehrerer Nutzer gesammelt und miteinander verglichen werden. Durch die Kombination dieser Daten mit seismologischen Referenzdaten wäre es möglich, das Epizentrum des Erdbebens näherungsweise zu bestimmen sowie betroffene Intensitätszonen wie „Scarcely Felt“, „Weak“, „Largely Observed“, „Strong“ oder „Slightly Damaging“ zu klassifizieren.
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## App Start
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+### Voraussetzungen
 
-## Get a fresh project
+Installieren:
 
-When you're ready, run:
+- Node.js LTS
+- Expo Go App auf dem Smartphone
+
+Verwendete Versionen:
+
+- Expo SDK: 54
+- React Native: 0.81.5
+- React: 19.1.0
+
+### Node.js installieren
+
+Node.js herunterladen und installieren:
+
+<https://nodejs.org>
+
+Nach der Installation prüfen:
 
 ```bash
-npm run reset-project
+node -v
+npm -v
+npx -v
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+### Projekt installieren
 
-## Learn more
+Projekt klonen und Dependencies installieren:
 
-To learn more about developing your project with Expo, look at the following resources:
+```bash
+npm install
+```
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### App starten
 
-## Join the community
+Wichtig! Handy und Laptop müssen im gleichen Netzwerk sein!
 
-Join our community of developers creating universal apps.
+```bash
+npx expo start
+```
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Falls Netzwerkprobleme auftreten:
+
+```bash
+npx expo start --tunnel
+```
+
+## App auf Smartphone öffnen
+
+1. Expo Go installieren
+2. Smartphone und Laptop im selben WLAN verbinden
+3. QR-Code im Terminal scannen
+
+## Wichtige Hinweise
+
+Dieses Projekt nutzt Expo SDK 54.
+
+Falls automatisch falsche Versionen installiert werden:
+
+```bash
+npm install expo@~54.0.0
+```
+
+Bei Problemen Cache leeren:
+
+```bash
+npx expo start -c
+```
+
+Bei Dependency-Problemen:
+
+```bash
+rm -r -fo node_modules
+del package-lock.json
+npm install
+```
