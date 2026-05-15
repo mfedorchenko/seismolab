@@ -2,7 +2,7 @@
 
 ## Mockup
 
-![Storyboard](docs\storyboard.png)
+![Storyboard](docs/storyboard.png)
 
 ## App Beschreibung
 
