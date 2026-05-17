@@ -14,24 +14,55 @@ export default function App() {
   const [subscription, setSubscription] =
     useState<EventSubscription | null>(null);
 
-
-
   /* wenn Handy geschüttelt wird, steigt die acceleration
   minus 1, weil Handy in Ruhezustand 1g misst, den muss man abziehen
   */
   /* Array um die letzte Werte speichern */
   const [samples, setSamples] = useState<number[]>([]);
-  /* Datenmenge begrenzen */
-
+  const [alarm, setAlarm] = useState("");
 
   const _subscribe = () => {
     setSubscription(
       Accelerometer.addListener((data) => {
         setData(data);
         Accelerometer.setUpdateInterval(150);
+        /* when phone is lying on the table: magnitude = 1, acceleration = |1 - 1| = 0 (Ruhezustand)
+           when phone is dropped (freefall): magnitude = 0, acceleration = |0 - 1| = |-1| = 1  
+        */
         const magnitude = Math.sqrt(data.x * data.x + data.y * data.y + data.z * data.z);
         const acceleration = Math.abs(magnitude - 1);
-        setSamples(prev => [...prev, acceleration].slice(-100));
+        /* how many data points, that are showed on the graph are inside a sta or lta list */
+        const STA_DATA_WINDOW = 10; 
+        const LTA_DATA_WINDOW = 50;
+
+        function average(arr: number[]) {
+          /* default 0 if array is empty */
+          return arr.reduce((a,b) => a + b, 0) / arr.length; 
+        }
+
+        setSamples((prev) => {
+          /* Datenmenge begrenzen */
+          const next = [...prev, acceleration].slice(-100);
+          /* only start looking for earthquake if there's enough data in the list for lta */
+          if (next.length >= LTA_DATA_WINDOW) {
+            /* sta = save in an array only the amount of data points (STA_DATA_WINDOW) and get the average from all of those data points
+               ex. [0.1, 0.2, 0.3] => (0.1 + 0.2 + 0.3) / 3
+            */
+            const sta = average(next.slice(-STA_DATA_WINDOW));
+            /* same as sta but with more data points */
+            const lta = average(next.slice(-LTA_DATA_WINDOW));
+
+            /* the important value for recognising earthquake */
+            const ratio = sta/lta;
+
+            if (ratio > 3) {
+              setAlarm("Erdbeben erkannt");
+              console.log("Erdbeben erkannt")
+            }
+          }
+          return next;          
+           
+        });
       })
     );
   };
@@ -99,6 +130,7 @@ export default function App() {
           paddingRight: 0,
         }}
       />
+      <Text>{alarm}</Text>
     </View>
   );
 }
